@@ -12,6 +12,7 @@ angular.module("timesFutebol").controller("listaTimesController", function ($sco
 	$scope.cadastrar = function (time) {
 		console.log("entrei no método cadastrar");
 		listaTimesService.salvarTime(time).success(function (data) {
+			delete $scope.time;
 			carregarTimes();
 		}).error (function (data) {
 			$scope.error = "Erro ao excluir!" + data;
