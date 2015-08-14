@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="timesFutebol">
+<head>
+	<meta charset="UTF-8">
+	<title>Times de Futebol</title>
+	<link rel="stylesheet" type="text/css" href="../../resources/lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../../resources/css/app.css">	
+	<script src="../../resources/lib/angular/angular.js"></script>
+	<script src="../../resources/js/app.js"></script>
+	<script src="../../resources/js/controller/listaTimesController.js"></script>	
+</head>
+<body ng-controller="listaTimesController">
+
+<div class="jumbotron">
+	
+<table class="table">
+	<tr>
+		<th></th>
+		<th>Nome do Time</th>
+		<th>Divisao</th>		
+	</tr>
+	<tr ng-repeat="time in times">
+		<td><input type="checkbox"/></td>
+		<td>{{time.nome}}</td>
+		<td>{{time.divisao}}</td>
+	</tr>
+</table>
+{{time}}
+<input type="text" ng-model="time.nome" class="form-control" placeholder="Digite aqui o nome do time">
+<input type="text" ng-model="time.divisao" class="form-control" placeholder="Digite aqui a divisão do time">
+<button class="btn btn-primary btn-block" ng-click="cadastrar(time)">Cadastrar time</button>
+<button class="btn btn-danger btn-block" ng-disabled="true">Apagar time</button>
+
+</div>
+
+</body>
+</html>
