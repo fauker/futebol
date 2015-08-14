@@ -8,11 +8,13 @@
 	<script src="../../resources/lib/angular/angular.js"></script>
 	<script src="../../resources/js/app.js"></script>
 	<script src="../../resources/js/controller/listaTimesController.js"></script>	
+	<script src="../../resources/js/services/listaTimesService.js"></script>
 </head>
 <body ng-controller="listaTimesController">
 
 <div class="jumbotron">
 	
+{{error}}	
 <table class="table">
 	<tr>
 		<th></th>
@@ -25,7 +27,6 @@
 		<td>{{time.divisao}}</td>
 	</tr>
 </table>
-{{time}}
 <input type="text" ng-model="time.nome" class="form-control" placeholder="Digite aqui o nome do time">
 <input type="text" ng-model="time.divisao" class="form-control" placeholder="Digite aqui a divisão do time">
 <button class="btn btn-primary btn-block" ng-click="cadastrar(time)">Cadastrar time</button>
