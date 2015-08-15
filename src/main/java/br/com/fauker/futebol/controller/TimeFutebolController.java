@@ -3,6 +3,8 @@ package br.com.fauker.futebol.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,13 +28,14 @@ public class TimeFutebolController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/todos", method = RequestMethod.GET)
-	public List<TimeFutebol> obterTodos() {
-		return this.timeFutebolService.getTimeFutebolRepository().findAll();
+	public ResponseEntity<List<TimeFutebol>> obterTodos() {
+		List<TimeFutebol> timesFutebol = timeFutebolService.getTimeFutebolRepository().findAll();
+		return new ResponseEntity<>(timesFutebol, HttpStatus.OK);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
-	public List<TimeFutebol> cadastrar(@RequestBody TimeFutebol timeFutebol) {
+	public ResponseEntity<List<TimeFutebol>> cadastrar(@RequestBody TimeFutebol timeFutebol) {
 		try {
 			this.timeFutebolService.getTimeFutebolRepository().save(timeFutebol);
 		} catch (Exception e) {
