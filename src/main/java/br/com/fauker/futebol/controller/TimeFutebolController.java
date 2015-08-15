@@ -49,7 +49,7 @@ public class TimeFutebolController {
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
 	public ResponseEntity<List<TimeFutebol>> cadastrar(@RequestBody TimeFutebol timeFutebol) {
 		try {
-			logger.debug("deletando um time de futebol");
+			logger.debug("salvando um time de futebol");
 			
 			this.timeFutebolService.getTimeFutebolRepository().save(timeFutebol);
 			
