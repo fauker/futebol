@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Times de Futebol</title>
 	<link rel="stylesheet" type="text/css" href="../../resources/lib/bootstrap/bootstrap.css">
+
 	<link rel="stylesheet" type="text/css" href="../../resources/css/app.css">	
 	<script src="../../resources/lib/angular/angular.js"></script>
 	<script src="../../resources/js/app.js"></script>
@@ -12,28 +13,37 @@
 	<script src="../../resources/js/value/configValue.js"></script>
 </head>
 <body ng-controller="listaTimesController">
-
-<div class="jumbotron">
 	
-{{error}}	
-<table class="table">
-	<tr>
-		<th></th>
-		<th>Nome do Time</th>
-		<th>Divisao</th>		
-	</tr>
-	<tr ng-repeat="time in times">
-		<td><input type="checkbox"/></td>
-		<td>{{time.nome}}</td>
-		<td>{{time.divisao}}</td>
-	</tr>
-</table>
-<input type="text" ng-model="time.nome" class="form-control" placeholder="Digite aqui o nome do time">
-<input type="text" ng-model="time.divisao" class="form-control" placeholder="Digite aqui a divisão do time">
-<button class="btn btn-primary btn-block" ng-click="cadastrar(time)">Cadastrar time</button>
-<button class="btn btn-danger btn-block" ng-disabled="true">Apagar time</button>
+<div class="container">
+  <h2>Times de Futebol</h2>
+  <button class="btn btn-primary" ng-click="mostrarFormulario()">Novo</button>
+  <table class="table">
+    <thead>
+      <tr>
+      	<th></th>
+        <th>Nome do Time</th>
+        <th>Divisao</th>
+      </tr>
+    </thead>
+    <tbody>
+	    <tr ng-class="{'selecionado negrito' : time.selecionado}" ng-repeat="time in times">
+	    	<td><input type="checkbox" ng-model="time.selecionado"/></td>
+	    	<td>{{time.nome}}</td>
+	    	<td>{{time.divisao}}</td>
+	    </tr>
+    </tbody>
+  </table>
 
+<form ng-show="formulario">
+	<div class="col-sm-5">
+		<input class="form-control" type="text" ng-model="time.nome" placeholder="Nome do time">
+	</div>  
+	<div class="col-sm-5">
+		<input class="form-control" type="text" ng-model="time.divisao" placeholder="Divisao">
+	</div>  
+	<button class="btn btn-success" ng-click="cadastrar(time)">Gravar</button>
+	<button class="btn" ng-click="btnLimpar()">Limpar</button>	
+</form>
 </div>
-
 </body>
 </html>

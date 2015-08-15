@@ -26,9 +26,6 @@ public class TimeFutebolController {
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String home() {
-		
-		logger.debug("entrando na página de listagem os times de futebol");
-		
 		return "/WEB-INF/views/times.html";
 	}
 	
@@ -36,11 +33,7 @@ public class TimeFutebolController {
 	@RequestMapping(value = "/todos", method = RequestMethod.GET)
 	public ResponseEntity<List<TimeFutebol>> obterTodos() {
 		
-		logger.debug("iniciando a busca pelos times de futebol");
-		
 		List<TimeFutebol> timesFutebol = timeFutebolService.getTimeFutebolRepository().findAll();
-		
-		logger.debug("busca pelos times de futebol finalizada");
 		
 		return new ResponseEntity<>(timesFutebol, HttpStatus.OK);
 	}
@@ -49,10 +42,7 @@ public class TimeFutebolController {
 	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
 	public ResponseEntity<List<TimeFutebol>> cadastrar(@RequestBody TimeFutebol timeFutebol) {
 		try {
-			logger.debug("salvando um time de futebol");
-			
 			this.timeFutebolService.getTimeFutebolRepository().save(timeFutebol);
-			
 		} catch (Exception e) {
 			logger.error(e);
 		}

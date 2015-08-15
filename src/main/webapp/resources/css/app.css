@@ -12,8 +12,12 @@
 	margin-bottom: 5px;
 }
 .selecionado {
-	background-color: yellow;
+	background-color: #FF9966;
 }
 .negrito {
 	font-weight: bold;
+}
+
+.sublinhado {
+	text-decoration: underline;
 }

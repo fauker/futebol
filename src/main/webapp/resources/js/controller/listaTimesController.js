@@ -1,5 +1,9 @@
 angular.module("timesFutebol").controller("listaTimesController", function ($scope, $http, listaTimesService) {
 	$scope.times = [];
+	
+	var esconderFormulario = function () {
+		$scope.formulario = false;
+	};
 
 	var carregarTimes = function () {
 		listaTimesService.getTimes().success(function (data) {
@@ -7,6 +11,10 @@ angular.module("timesFutebol").controller("listaTimesController", function ($sco
 		}).error (function (data) {
 			$scope.error = "Deu treta!" + data;
 		});
+	};
+
+	$scope.btnLimpar = function () {
+		delete $scope.time;
 	};
 
 	$scope.cadastrar = function (time) {
@@ -19,5 +27,10 @@ angular.module("timesFutebol").controller("listaTimesController", function ($sco
 		});
 	}
 
+	$scope.mostrarFormulario = function () {
+		$scope.formulario = true;
+	}
+
 	carregarTimes();
+	esconderFormulario();
 });

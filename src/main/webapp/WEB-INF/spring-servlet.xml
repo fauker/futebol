@@ -42,12 +42,6 @@
 		<property name="jdbcUrl" value="jdbc:mysql://localhost/futebol"/>
 		<property name="user" value="root"/>
 		<property name="password" value="root"/>
-		<!-- Propriedades do C3P0 -->
-		<property name="acquireIncrement" value="1"/> <!-- Determina quantas conexões por vez o c3p0 tenta adquirir quando o pool não tem conexões inativas para serem usadas. -->
-		<property name="minPoolSize" value="5"/>
-		<property name="maxPoolSize" value="50"/>
-		<property name="maxIdleTime" value="60"/> <!-- Segundos que uma conexao será mantida no pool sem ser usada, antes de ser descartada -->
-		<property name="idleConnectionTestPeriod" value="300"/> <!--  c3p0 irá testar todas as conexões inativas, que estão no pool e não fizeram o check-out, de X em X segundos, onde X é o valor de idleConnectionTestPeriod. -->
 	</bean>
 
 	<!-- gerenciamento do JPA pelo spring -->
