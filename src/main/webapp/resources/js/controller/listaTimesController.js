@@ -20,6 +20,7 @@ angular.module("timesFutebol").controller("listaTimesController", function ($sco
 	$scope.cadastrar = function (time) {
 		listaTimesService.salvarTime(time).success(function (data) {
 			delete $scope.time;
+			$scope.timeForm.$setPristine();
 			carregarTimes();
 		}).error (function (data) {
 			$scope.error = "Erro ao cadastrar!" + data;

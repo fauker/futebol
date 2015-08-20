@@ -11,3 +11,7 @@
 .form-control {
 	margin-bottom: 5px;
 }
+
+.ui-warning {
+	background-color: red;
+}

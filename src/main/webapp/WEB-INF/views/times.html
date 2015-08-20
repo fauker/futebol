@@ -20,7 +20,6 @@
   <table class="table">
     <thead>
       <tr>
-      	<th></th>
         <th>Nome do Time</th>
         <th>Divisao</th>
       </tr>
@@ -36,16 +35,23 @@
     </tbody>
   </table>
 
-<form ng-show="formulario">
+<form ng-show="formulario" name="timeForm">
 	<div class="col-sm-5">
-		<input class="form-control" type="text" ng-model="time.nome" placeholder="Nome do time">
+		<input class="form-control" type="text" ng-model="time.nome" name="nome" placeholder="Nome do time" required="true">
 	</div>  
 	<div class="col-sm-5">
-		<input class="form-control" type="text" ng-model="time.divisao" placeholder="Divisao">
+		<input class="form-control" type="text" ng-model="time.divisao" name="divisao" placeholder="Divisao" required="true">
 	</div>  
-	<button class="btn btn-success" ng-click="cadastrar(time)">Gravar</button>
+	<button class="btn btn-success" ng-click="cadastrar(time)" ng-disabled="timeForm.$invalid">Gravar</button>
 	<button class="btn" ng-click="btnLimpar()">Limpar</button>	
 </form>
+<br />
+<div class="alert alert-danger" ng-show="timeForm.nome.$error.required && timeForm.nome.$dirty">
+	Preencha o nome!
+</div>
+<div class="alert alert-danger" ng-show="timeForm.divisao.$error.required && timeForm.divisao.$dirty">
+	Preencha a divisao!
+</div>
 </div>
 </body>
 </html>
