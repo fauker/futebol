@@ -6,5 +6,6 @@ import br.com.fauker.futebol.domain.TimeFutebol;
 
 
 public interface TimeFutebolRepository extends JpaRepository<TimeFutebol, Long>{
+
 	
 }

@@ -18,18 +18,25 @@ angular.module("timesFutebol").controller("listaTimesController", function ($sco
 	};
 
 	$scope.cadastrar = function (time) {
-		console.log("entrei no método cadastrar");
 		listaTimesService.salvarTime(time).success(function (data) {
 			delete $scope.time;
 			carregarTimes();
 		}).error (function (data) {
-			$scope.error = "Erro ao excluir!" + data;
+			$scope.error = "Erro ao cadastrar!" + data;
 		});
 	}
 
+	$scope.excluir = function (time) {
+		listaTimesService.excluirTime(time).success(function (data) {
+			carregarTimes();
+		}).error (function (data) {
+			$scope.error = "Erro ao excluir!" + data;
+		});
+	}	
+
 	$scope.mostrarFormulario = function () {
 		$scope.formulario = true;
-	}
+	};
 
 	carregarTimes();
 	esconderFormulario();

@@ -6,4 +6,8 @@ angular.module("timesFutebol").service("listaTimesService", function ($http, con
 	this.salvarTime = function (time) {
 		return $http.post(config.baseUrl + "times/cadastrar", time);
 	};
+
+	this.excluirTime = function (time) {
+		return $http.get(config.baseUrl + "times/excluir/" + time.id);
+	};
 });

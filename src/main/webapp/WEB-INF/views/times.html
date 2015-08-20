@@ -26,10 +26,12 @@
       </tr>
     </thead>
     <tbody>
-	    <tr ng-class="{'selecionado negrito' : time.selecionado}" ng-repeat="time in times">
-	    	<td><input type="checkbox" ng-model="time.selecionado"/></td>
+	    <tr ng-repeat="time in times">
 	    	<td>{{time.nome}}</td>
 	    	<td>{{time.divisao}}</td>
+	    	<td>
+	    		<button class="btn btn-small btn-danger" ng-click="excluir(time)">Excluir</button>
+	    	</td>
 	    </tr>
     </tbody>
   </table>
